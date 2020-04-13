@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #imgList {
+        margin-left: 200px;
+    }
+
+    #nav {
+        position: fixed;
+        top: 200px;
+        left: 1450px;
+        width: 50px;
+    }
+
+    #nav li {
+        padding: 5px;
+        margin: 3px;
+        list-style: none;
+        background: pink;
+        cursor: pointer;
+    }
+
+    #nav li:hover {
+        background-color: red;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="imgList">
+        <div><img src="京东秒杀.png" alt=""></div>
+        <div><img src="每日特价.png" alt=""></div>
+        <div><img src="频道广场.png" alt=""></div>
+        <div><img src="为你推荐.png" alt=""></div>
+    </div>
+    <ul id="nav" class="hide">
+        <li>京东秒杀</li>
+        <li id="two">每日特价</li>
+        <li id="three">频道广场</li>
+        <li id="four">为你推荐</li>
+        <li id="topBtn">回到顶部</li>
+    </ul>
+</body>
+<script>
+    var nav = document.getElementById("nav");
+    document.body.onscroll = function (e) {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            nav.classList.remove("hide");
+        } else {
+            nav.classList.add("hide");
+
+        }
+
+    }
+
+    for (var i = 0; i < nav.children.length; i++) {
+        nav.children[i].index = i;
+        nav.children[i].onclick = function () {
+            var op = imgList.children[this.index].offsetTop;
+            document.body.scrollTop = op;
+            document.documentElement.scrollTop = op;
+        }
+        topBtn.onclick = function (e) {
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0
+        }
+    }
+
+
+</script>
+
+</html>
